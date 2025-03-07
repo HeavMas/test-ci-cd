@@ -1,14 +1,7 @@
-# Используем официальный образ Python
 FROM python:3.11
-
-# Устанавливаем рабочую директорию внутри контейнера
 WORKDIR /app
-
-# Копируем код сервера в контейнер
+COPY requirements.txt .  
+RUN pip install -r requirements.txt  
 COPY server.py .
-
-# Указываем, какой порт будет слушать контейнер
 EXPOSE 10000
-
-# Запускаем сервер при старте контейнера
 CMD ["python", "server.py"]
